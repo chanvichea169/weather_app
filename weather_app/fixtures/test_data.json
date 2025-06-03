@@ -1,0 +1,19 @@
+[
+    {
+        "model": "weather_app.city",
+        "pk": 1,
+        "fields": {
+            "name": "Test Name",
+            "description": "Test Description"
+        }
+    },
+    {
+        "model": "weather_app.city",
+        "pk": 2,
+        "fields": {
+            "name": "Another Test Name",
+            "description": "Another Test Description"
+        }
+    }
+]
+

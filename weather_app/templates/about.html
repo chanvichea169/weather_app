@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About - Weather App</title>
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 shadow-md py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <!-- Logo or App Name -->
+            <a href="{% url 'home' %}" class="text-white text-2xl font-semibold hover:text-blue-200">Weather App</a>
+            <!-- Navigation Links -->
+            <div class="space-x-6">
+                <a href="{% url 'home' %}" class="text-white text-lg hover:text-blue-200">Home</a>
+                <a href="{% url 'about' %}" class="text-white text-lg hover:text-blue-200">About</a>
+                <a href="{% url 'contact' %}" class="text-white text-lg hover:text-blue-200">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-10 px-4">
+        <h1 class="text-4xl text-center font-bold text-gray-800">About Weather App</h1>
+        <p class="text-center text-lg text-gray-600 mt-4">This app provides real-time weather information to help you plan your day. Whether you're at home, traveling, or out for a walk, get accurate weather updates and forecasts.</p>
+
+        <div class="mt-10">
+            <h2 class="text-2xl font-semibold text-gray-700">Our Mission</h2>
+            <p class="text-gray-600 mt-2">Our mission is to provide reliable and accessible weather information for everyone. We aim to make weather forecasting easy and quick so you can make informed decisions on your daily activities.</p>
+        </div>
+    </div>
+</body>
+</html>

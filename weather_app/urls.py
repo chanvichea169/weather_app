@@ -1,0 +1,41 @@
+from django.urls import path
+from .import views
+
+urlpatterns = [
+
+    #weather_app
+    path(route='', view =views.home, name='home'),
+    path(route='about/', view = views.about, name='about'),
+    path(route='contact/', view = views.contact, name='contact'),
+
+    #testing api path
+
+    #city
+    path(route='city_list/', view=views.city_list, name='city_list'),
+    path(route='city_list/<id>/', view=views.city_detail, name='city_detail'),
+
+    # orders
+    path(route='order_list/', view=views.order_list, name='order_list'),
+    path(route='order_list/<id>/', view=views.order_detail, name='order_detail'),
+
+    #Promotions
+    path(route='promotion_list/', view=views.promotion_list, name='promotion_list'),
+    path(route='promotion_list/<id>/', view=views.promotion_details, name='promotion_details'),
+
+    #customers
+    path(route='customer_list/', view=views.customer_list, name='customer_list'),
+    path(route='customer_list/<id>/', view=views.customer_detail, name='customer_detail'),
+
+    #products
+    path(route='product_list/', view=views.product_list, name='product_list'),
+    path(route='product_list/<id>/', view=views.product_detail, name='product_detail'),
+
+    #promotion
+    path(route='promotion_list/', view=views.promotion_list, name='promotion_list'),
+    path(route='promotion_list/<id>/', view=views.promotion_details, name='promotion_details'),
+
+    #address
+    path(route='address_list/', view=views.address_list, name='address_list'),
+    path(route='address_list/<id>/', view=views.address_detail, name='address_detail'),
+
+]
