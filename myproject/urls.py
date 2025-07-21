@@ -1,23 +1,29 @@
-"""
-URL configuration for myproject project.
+from django.urls import include, path
+from rest_framework.routers import DefaultRouter
+from rest_framework_nested.routers import NestedDefaultRouter
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path, include
+from weather_app.views import (
+    CityViewSet, CustomerViewSet, PromotionViewSet,
+    CollectionViewSet, ProductViewSet, OrderViewSet,
+    OrderItemViewSet, AddressViewSet
+)
+
+router = DefaultRouter()
+router.register(r'customers', CustomerViewSet, basename='customers')
+router.register(r'cities', CityViewSet)
+router.register(r'promotions', PromotionViewSet)
+router.register(r'collections', CollectionViewSet)
+router.register(r'products', ProductViewSet)
+
+customers_router = NestedDefaultRouter(router, r'customers', lookup='customer')
+customers_router.register(r'addresses', AddressViewSet, basename='customer-addresses')
+customers_router.register(r'orders', OrderViewSet, basename='customer-orders')
+
+orders_router = NestedDefaultRouter(customers_router, r'orders', lookup='order')
+orders_router.register(r'items', OrderItemViewSet, basename='order-items')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('weather_app.urls')),
+    path('', include(router.urls)),
+    path('', include(customers_router.urls)),
+    path('', include(orders_router.urls)),
 ]
